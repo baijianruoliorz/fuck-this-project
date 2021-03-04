@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.wizz.gift.mapper.GiftMapper">
+
+    <select id="getTotalNum" resultType="java.lang.Integer">
+          SELECT COUNT(id) FROM gift;
+    </select>
+
+    <select id="getRandomGift" resultType="com.wizz.gift.entity.Gift">
+        SELECT * FROM `gift` ORDER BY RAND() LIMIT 10
+    </select>
+    <select id="getBoyRank" resultType="com.wizz.gift.entity.Gift">
+--     记得limit必须大写
+        select * from `gift` order by boylike desc LIMIT 10
+    </select>
+    <select id="getGirlRank" resultType="com.wizz.gift.entity.Gift">
+        select * from `gift` order by girllike desc LIMIT 10
+    </select>
+</mapper>
